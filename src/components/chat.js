@@ -8,13 +8,22 @@ class ChatRoom extends React.Component {
     this.submitMessage = this.submitMessage.bind(this)
     this.state = {
       message: '',
-      messages: [
-        {id:0, text: 'first message'},
-        {id:1, text: 'second message'},
-        {id:2, text: 'third message'}
-      ]
+      messages: []
     }
   }
+
+  componentDidMount(){
+    firebase.database().ref('messages/').on('value', (snapshot) => {
+      const currentMessage = snapshot.val()
+
+      if (currentMessage != null){
+        this.setState({
+          messages: currentMessage
+        })
+      }
+    })
+  }
+
   updateMessage(event){
     console.log('updateMessage' + event.target.value)
     this.setState({
@@ -24,6 +33,18 @@ class ChatRoom extends React.Component {
 
   submitMessage(event){
     console.log('submitMessage: ' + this.state.message)
+    const nextMessage = {
+      id: this.state.messages.length,
+      text: this.state.message
+    }
+
+    firebase.database().ref('messages/' + nextMessage.id).set(nextMessage)
+    // var list = Object.assign([], this.state.messages)
+    // list.push(nextMessage)
+    // this.setState({
+    //   messages: list
+    // })
+
   }
 
   render(){

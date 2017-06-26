@@ -22456,12 +22456,27 @@ var ChatRoom = function (_React$Component) {
     _this.submitMessage = _this.submitMessage.bind(_this);
     _this.state = {
       message: '',
-      messages: [{ id: 0, text: 'first message' }, { id: 1, text: 'second message' }, { id: 2, text: 'third message' }]
+      messages: []
     };
     return _this;
   }
 
   _createClass(ChatRoom, [{
+    key: 'componentDidMount',
+    value: function componentDidMount() {
+      var _this2 = this;
+
+      firebase.database().ref('messages/').on('value', function (snapshot) {
+        var currentMessage = snapshot.val();
+
+        if (currentMessage != null) {
+          _this2.setState({
+            messages: currentMessage
+          });
+        }
+      });
+    }
+  }, {
     key: 'updateMessage',
     value: function updateMessage(event) {
       console.log('updateMessage' + event.target.value);
@@ -22473,6 +22488,17 @@ var ChatRoom = function (_React$Component) {
     key: 'submitMessage',
     value: function submitMessage(event) {
       console.log('submitMessage: ' + this.state.message);
+      var nextMessage = {
+        id: this.state.messages.length,
+        text: this.state.message
+      };
+
+      firebase.database().ref('messages/' + nextMessage.id).set(nextMessage);
+      // var list = Object.assign([], this.state.messages)
+      // list.push(nextMessage)
+      // this.setState({
+      //   messages: list
+      // })
     }
   }, {
     key: 'render',
