@@ -7,7 +7,7 @@ module.exports = {
 	},
 	output: {
 		filename:"build/bundle.js",
-        sourceMapFilename: "build/bundle.map"
+        sourceMapFilename: "public/build/bundle.map"
 	},
     devtool: '#source-map',
 	// plugins: [

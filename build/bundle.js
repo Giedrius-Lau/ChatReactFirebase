@@ -22537,4 +22537,4 @@ module.exports = ChatRoom;
 
 /***/ })
 /******/ ]);
-//# sourceMappingURL=bundle.map
+//# sourceMappingURL=../public/build/bundle.map
