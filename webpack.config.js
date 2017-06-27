@@ -6,7 +6,7 @@ module.exports = {
 		app: "./src/app.js"
 	},
 	output: {
-		filename:"build/bundle.js",
+		filename:"/public/build/bundle.js",
         sourceMapFilename: "public/build/bundle.map"
 	},
     devtool: '#source-map',
