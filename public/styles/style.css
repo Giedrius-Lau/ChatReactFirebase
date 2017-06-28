@@ -1,0 +1,63 @@
+body {
+  background: rgb(44,53,54);
+  background-image: url('images/leaf.jpg');
+  background-position: center;
+  background-size: cover;
+  color: #333;
+  background-position: center;
+}
+.mainContainer{
+  margin: 50px auto;
+  width: 300px;
+  box-shadow:0px 4px 20px rgba(0, 0, 0, 0.47);
+  border-radius: 5px;
+  padding: 0 20px;
+  min-height: 400px;
+  position: relative;
+  background: rgba(71,84,88, .8);
+  display: flex;
+  flex-direction: column-reverse !important;
+  overflow: hidden;
+
+}
+.mainMessage{
+  position: absolute;
+  left: 20px;
+  bottom: 10px;
+  width: 60%;
+  height: 30px;
+  border: 0;
+  border-radius: 3px;
+  box-shadow:0px 4px 10px rgba(0, 0, 0, 0.47);
+  padding: 5px 10px;
+  background: #f9f9f9;
+}
+.mainSend{
+  position: absolute;
+  right: 20px;
+  bottom: 10px;
+  width: 20%;
+  padding: 7px 10px;
+  background: rgb(44,53,54);
+  color: #eee;
+  border: 0;
+  border-radius: 3px;
+  box-shadow:0px 4px 10px rgba(0, 0, 0, 0.47);
+
+}
+.chatContainer{
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.47);
+  overflow-y: scroll;
+  height: auto;
+  margin: 0;
+  margin-bottom: 60px;
+  border-radius: 3px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  max-height: 400px;
+  background: #eee;
+
+}
+.chatContainer li{
+  list-style-type: none;
+}
