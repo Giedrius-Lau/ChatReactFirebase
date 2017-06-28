@@ -56,8 +56,9 @@ body {
   padding-bottom: 10px;
   max-height: 400px;
   background: #eee;
-
+  padding-left: 10px;
 }
 .chatContainer li{
   list-style-type: none;
+  margin: 0;
 }

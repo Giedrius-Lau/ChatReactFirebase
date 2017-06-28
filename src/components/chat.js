@@ -57,7 +57,7 @@ class ChatRoom extends React.Component {
   render(){
     const currentMessage = this.state.messages.map((message, i) => {
       return (
-        <li key={message.id}>{message.time}{message.text}</li>
+        <li key={message.id}>{message.time}:  {message.text}</li>
       )
     })
 

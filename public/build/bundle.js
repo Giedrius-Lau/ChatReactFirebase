@@ -9836,6 +9836,7 @@ var ChatRoom = function (_React$Component) {
           'li',
           { key: message.id },
           message.time,
+          ':  ',
           message.text
         );
       });
