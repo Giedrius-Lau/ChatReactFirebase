@@ -7,12 +7,14 @@ class ChatRoom extends React.Component {
     super(props, context);
     this.updateMessage = this.updateMessage.bind(this)
     this.submitMessage = this.submitMessage.bind(this)
+    this.choseName = this.choseName.bind(this)
 
     this.state = {
       message: '',
       messages: []
     }
   }
+
 
 
 
@@ -33,16 +35,28 @@ class ChatRoom extends React.Component {
     this.setState({
       message: event.target.value
     })
+
+  }
+  choseName(event){
+    this.setState({
+      name: event.target.value
+    })
   }
 
+
   submitMessage(event){
+    event.preventDefault();
+
+
     var date = new Date().toLocaleTimeString().replace(/([\d]+:[\d]{2})(:[\d]{2})(.*)/, "$1$3")
     const nextMessage = {
       id: this.state.messages.length,
+      name: this.state.name,
       text: this.state.message,
       time: date
     }
     firebase.database().ref('messages/' + nextMessage.id).set(nextMessage)
+    this.refs.message.value = '';
 
 
 
@@ -57,16 +71,23 @@ class ChatRoom extends React.Component {
   render(){
     const currentMessage = this.state.messages.map((message, i) => {
       return (
-        <li key={message.id}>{message.time}:  {message.text}</li>
+        <li key={message.id}>
+          <i className="name">{message.name} {message.time}:</i>
+          <p id="messages">{message.text}</p>
+        </li>
       )
     })
 
     return (
       <div className="mainContainer">
+
         <ul id="chatLog" className="chatContainer mylist">{currentMessage}</ul>
-        <input className="mainMessage" onChange={this.updateMessage} type="text" placeholder="Message"/>
+        <form onSubmit={this.submitMessage}>
+        <input className="mainMessage mainMessage2" onChange={this.choseName} type="text" placeholder="Your name:"></input>
+        <input className="mainMessage message" onChange={this.updateMessage} ref="message" type="text" placeholder="Message"/>
         <br />
-        <button className="mainSend add" onClick={this.submitMessage}>Submit message</button>
+        <button className="mainSend add" onClick={this.submitMessage}>Send</button>
+        </form>
       </div>
     )
   }

@@ -9780,6 +9780,7 @@ var ChatRoom = function (_React$Component) {
 
     _this.updateMessage = _this.updateMessage.bind(_this);
     _this.submitMessage = _this.submitMessage.bind(_this);
+    _this.choseName = _this.choseName.bind(_this);
 
     _this.state = {
       message: '',
@@ -9812,15 +9813,26 @@ var ChatRoom = function (_React$Component) {
       });
     }
   }, {
+    key: 'choseName',
+    value: function choseName(event) {
+      this.setState({
+        name: event.target.value
+      });
+    }
+  }, {
     key: 'submitMessage',
     value: function submitMessage(event) {
+      event.preventDefault();
+
       var date = new Date().toLocaleTimeString().replace(/([\d]+:[\d]{2})(:[\d]{2})(.*)/, "$1$3");
       var nextMessage = {
         id: this.state.messages.length,
+        name: this.state.name,
         text: this.state.message,
         time: date
       };
       firebase.database().ref('messages/' + nextMessage.id).set(nextMessage);
+      this.refs.message.value = '';
 
       // var list = Object.assign([], this.state.messages)
       // list.push(nextMessage)
@@ -9835,9 +9847,19 @@ var ChatRoom = function (_React$Component) {
         return React.createElement(
           'li',
           { key: message.id },
-          message.time,
-          ':  ',
-          message.text
+          React.createElement(
+            'i',
+            { className: 'name' },
+            message.name,
+            ' ',
+            message.time,
+            ':'
+          ),
+          React.createElement(
+            'p',
+            { id: 'messages' },
+            message.text
+          )
         );
       });
 
@@ -9849,12 +9871,17 @@ var ChatRoom = function (_React$Component) {
           { id: 'chatLog', className: 'chatContainer mylist' },
           currentMessage
         ),
-        React.createElement('input', { className: 'mainMessage', onChange: this.updateMessage, type: 'text', placeholder: 'Message' }),
-        React.createElement('br', null),
         React.createElement(
-          'button',
-          { className: 'mainSend add', onClick: this.submitMessage },
-          'Submit message'
+          'form',
+          { onSubmit: this.submitMessage },
+          React.createElement('input', { className: 'mainMessage mainMessage2', onChange: this.choseName, type: 'text', placeholder: 'Your name:' }),
+          React.createElement('input', { className: 'mainMessage message', onChange: this.updateMessage, ref: 'message', type: 'text', placeholder: 'Message' }),
+          React.createElement('br', null),
+          React.createElement(
+            'button',
+            { className: 'mainSend add', onClick: this.submitMessage },
+            'Send'
+          )
         )
       );
     }
