@@ -3,8 +3,11 @@ body {
   background-image: url('images/leaf.jpg');
   background-position: center;
   background-size: cover;
+  background-repeat: no-repeat;
   color: #333;
   background-position: center;
+  font-family: 'Proza Libre', sans-serif;
+
 }
 .mainContainer{
   margin: 50px auto;
@@ -61,4 +64,5 @@ body {
 .chatContainer li{
   list-style-type: none;
   margin: 0;
+  font-size:20px;
 }
