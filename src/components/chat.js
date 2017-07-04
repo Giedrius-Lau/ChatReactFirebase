@@ -79,7 +79,8 @@ class ChatRoom extends React.Component {
     })
 
     return (
-      <div className="mainContainer">
+      <div className="row">
+      <div className="mainContainer offset-md-3 col-md-4 col-md-offset-4 col-sm-10 col-sm-offset-1">
         <ul id="chatLog" className="chatContainer mylist">{currentMessage}</ul>
         <form onSubmit={this.submitMessage}>
         <input className="mainMessage mainMessage2" onChange={this.choseName} type="text" placeholder="Your name:"></input>
@@ -87,6 +88,7 @@ class ChatRoom extends React.Component {
         <br />
         <button className="mainSend add" onClick={this.submitMessage}>Send</button>
         </form>
+      </div>
       </div>
     )
   }

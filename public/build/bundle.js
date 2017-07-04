@@ -9865,22 +9865,26 @@ var ChatRoom = function (_React$Component) {
 
       return React.createElement(
         'div',
-        { className: 'mainContainer' },
+        { className: 'row' },
         React.createElement(
-          'ul',
-          { id: 'chatLog', className: 'chatContainer mylist' },
-          currentMessage
-        ),
-        React.createElement(
-          'form',
-          { onSubmit: this.submitMessage },
-          React.createElement('input', { className: 'mainMessage mainMessage2', onChange: this.choseName, type: 'text', placeholder: 'Your name:' }),
-          React.createElement('input', { className: 'mainMessage message', onChange: this.updateMessage, ref: 'message', type: 'text', placeholder: 'Message' }),
-          React.createElement('br', null),
+          'div',
+          { className: 'mainContainer offset-md-3 col-md-4 col-md-offset-4 col-sm-10 col-sm-offset-1' },
           React.createElement(
-            'button',
-            { className: 'mainSend add', onClick: this.submitMessage },
-            'Send'
+            'ul',
+            { id: 'chatLog', className: 'chatContainer mylist' },
+            currentMessage
+          ),
+          React.createElement(
+            'form',
+            { onSubmit: this.submitMessage },
+            React.createElement('input', { className: 'mainMessage mainMessage2', onChange: this.choseName, type: 'text', placeholder: 'Your name:' }),
+            React.createElement('input', { className: 'mainMessage message', onChange: this.updateMessage, ref: 'message', type: 'text', placeholder: 'Message' }),
+            React.createElement('br', null),
+            React.createElement(
+              'button',
+              { className: 'mainSend add', onClick: this.submitMessage },
+              'Send'
+            )
           )
         )
       );
