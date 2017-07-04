@@ -80,7 +80,6 @@ class ChatRoom extends React.Component {
 
     return (
       <div className="mainContainer">
-
         <ul id="chatLog" className="chatContainer mylist">{currentMessage}</ul>
         <form onSubmit={this.submitMessage}>
         <input className="mainMessage mainMessage2" onChange={this.choseName} type="text" placeholder="Your name:"></input>

@@ -9846,7 +9846,7 @@ var ChatRoom = function (_React$Component) {
       var currentMessage = this.state.messages.map(function (message, i) {
         return React.createElement(
           'li',
-          { className: 'add', key: message.id },
+          { key: message.id },
           React.createElement(
             'i',
             { className: 'name' },
