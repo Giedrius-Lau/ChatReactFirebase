@@ -6,7 +6,6 @@ body {
   background-repeat: no-repeat;
   background-size: cover;
   font-family: 'Proza Libre', sans-serif;
-
 }
 .mainContainer{
   margin: 50px auto;
@@ -82,9 +81,14 @@ body {
 @media only screen and (max-width: 1080px) {
     .mainContainer{
       width: 95%;
+      height: 95%;
       margin: auto;
     }
     .mainMessage{
       height: 15px;
+    }
+    body{
+      transform: scale(1.2);
+
     }
 }
